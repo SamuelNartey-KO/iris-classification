@@ -2,7 +2,9 @@
 
 A web application that predicts the species of an iris flower (setosa, versicolor or virginica) from its sepal and petal measurements.
 
-**Live site:** https://SamuelNartey-KO.github.io/iris-classification/
+**Live site (Vercel):** https://iris-classification-three-kappa.vercel.app
+
+**Repository:** https://github.com/SamuelNartey-KO/iris-classification
 
 ## About the project
 
@@ -10,6 +12,7 @@ A web application that predicts the species of an iris flower (setosa, versicolo
 - **Model:** K-Nearest Neighbours (k = 5), chosen from Logistic Regression, KNN and Decision Tree using 5-fold cross-validation
 - **Training:** Python and scikit-learn in Google Colab
 - **Website:** hand-built with HTML, CSS and JavaScript. The model is exported as JSON and the prediction runs in the browser.
+- **Hosting:** Vercel, deployed from this repository
 
 ## Test set results (30 flowers)
 
@@ -24,7 +27,7 @@ A web application that predicts the species of an iris flower (setosa, versicolo
 
 - `data/` - the Iris dataset
 - `notebooks/` - the Colab notebook (exploration, training, evaluation)
-- `images/` - graphs used in the report and website
+- `images/` - graphs used in the report
 - `model/` - exported model (`iris_model.json`)
 - `index.html`, `style.css`, `script.js` - the website
 
@@ -34,4 +37,4 @@ Serve the folder with a local server (for example VS Code Live Server, or `pytho
 
 ## Author
 
-Nartey Samuel
+Samuel Nartey
