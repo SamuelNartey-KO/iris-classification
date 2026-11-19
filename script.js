@@ -12,38 +12,15 @@ function capitalise(text) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-function showMetrics(metrics) {
-  const pct = (v) => (v * 100).toFixed(2) + "%";
-  document.getElementById("m-accuracy").textContent = pct(metrics.accuracy);
-  document.getElementById("m-precision").textContent = pct(metrics.precision);
-  document.getElementById("m-recall").textContent = pct(metrics.recall);
-  document.getElementById("m-f1").textContent = pct(metrics.f1);
-
-  const body = document.getElementById("per-class-body");
-  body.innerHTML = "";
-  model.classes.forEach((name) => {
-    const row = metrics.per_class[name];
-    body.innerHTML += `
-      <tr>
-        <td>${capitalise(name)}</td>
-        <td>${row["precision"].toFixed(2)}</td>
-        <td>${row["recall"].toFixed(2)}</td>
-        <td>${row["f1-score"].toFixed(2)}</td>
-        <td>${row["support"]}</td>
-      </tr>`;
-  });
-}
-
 async function loadModel() {
   try {
     const response = await fetch("model/iris_model.json");
     if (!response.ok) throw new Error("HTTP " + response.status);
     model = await response.json();
-    showMetrics(model.metrics);
   } catch (error) {
     showResult(
       "Could not load the model file. If you opened this page by double-clicking it, " +
-      "run it through a local server instead (see the README).",
+      "run it through a local server instead (for example VS Code Live Server).",
       true
     );
     console.error(error);
@@ -126,7 +103,9 @@ document.getElementById("predict-btn").addEventListener("click", () => {
 });
 
 document.getElementById("clear-btn").addEventListener("click", () => {
-  model.features.forEach((f) => (document.getElementById(f).value = ""));
+  ["sepal_length", "sepal_width", "petal_length", "petal_width"].forEach(
+    (id) => (document.getElementById(id).value = "")
+  );
   resultBox.classList.add("hidden");
 });
 
