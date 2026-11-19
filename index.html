@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iris Species Classifier</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Iris Species Classifier</h1>
+    <p>A K-Nearest Neighbours model that predicts the species of an iris flower from its measurements.</p>
+  </header>
+
+  <main>
+
+    <section id="task">
+      <h2>Task Description</h2>
+      <p>
+        This project builds a classification model on the Iris dataset supplied by the lecturer.
+        The dataset has 150 flowers, each with four measurements (sepal length, sepal width,
+        petal length, petal width) and one of three species: setosa, versicolor or virginica.
+        The model was trained in Python (scikit-learn) and runs in this page using JavaScript.
+      </p>
+    </section>
+
+    <section id="predictor">
+      <h2>Try the Model</h2>
+      <p>Enter the four measurements in centimetres and click Predict.</p>
+
+      <div class="form-grid">
+        <label>Sepal length (cm)
+          <input type="number" id="sepal_length" min="4" max="8" step="0.1" placeholder="e.g. 5.1">
+        </label>
+        <label>Sepal width (cm)
+          <input type="number" id="sepal_width" min="2" max="4.5" step="0.1" placeholder="e.g. 3.5">
+        </label>
+        <label>Petal length (cm)
+          <input type="number" id="petal_length" min="1" max="7" step="0.1" placeholder="e.g. 1.4">
+        </label>
+        <label>Petal width (cm)
+          <input type="number" id="petal_width" min="0.1" max="2.6" step="0.1" placeholder="e.g. 0.2">
+        </label>
+      </div>
+
+      <button id="predict-btn">Predict</button>
+      <button id="clear-btn" class="secondary">Clear</button>
+
+      <div id="result" class="result hidden"></div>
+    </section>
+
+    <section id="metrics">
+      <h2>Model Evaluation</h2>
+      <p>Results on the 30 flowers held back as a test set.</p>
+
+      <div class="cards">
+        <div class="card"><span class="label">Accuracy</span><span class="value" id="m-accuracy">—</span></div>
+        <div class="card"><span class="label">Precision</span><span class="value" id="m-precision">—</span></div>
+        <div class="card"><span class="label">Recall</span><span class="value" id="m-recall">—</span></div>
+        <div class="card"><span class="label">F1 Score</span><span class="value" id="m-f1">—</span></div>
+      </div>
+
+      <h3>Per-Species Results</h3>
+      <table>
+        <thead>
+          <tr><th>Species</th><th>Precision</th><th>Recall</th><th>F1 Score</th><th>Test samples</th></tr>
+        </thead>
+        <tbody id="per-class-body"></tbody>
+      </table>
+    </section>
+
+    <section id="graphs">
+      <h2>Data Exploration and Results</h2>
+
+      <figure>
+        <img src="images/class_distribution.png" alt="Number of samples per species">
+        <figcaption>Figure 1: Number of samples per species</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/feature_histograms.png" alt="Histograms of the four measurements">
+        <figcaption>Figure 2: Distribution of the four measurements</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/pairplot.png" alt="Pairplot of all features coloured by species">
+        <figcaption>Figure 3: Pairplot of the features, coloured by species</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/correlation_heatmap.png" alt="Correlation heatmap">
+        <figcaption>Figure 4: Correlation between the features</figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/confusion_matrix.png" alt="Confusion matrix for KNN">
+        <figcaption>Figure 5: Confusion matrix of the KNN model on the test set</figcaption>
+      </figure>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Iris Classification Project</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
