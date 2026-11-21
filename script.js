@@ -1,15 +1,16 @@
 let model = null;
 
 const resultBox = document.getElementById("result");
+const featureIds = ["sepal_length", "sepal_width", "petal_length", "petal_width"];
+
+function capitalise(text) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
 
 function showResult(html, isError = false) {
   resultBox.innerHTML = html;
   resultBox.classList.remove("hidden");
   resultBox.classList.toggle("error", isError);
-}
-
-function capitalise(text) {
-  return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
 async function loadModel() {
@@ -94,7 +95,7 @@ document.getElementById("predict-btn").addEventListener("click", () => {
       .join(" | ");
 
     showResult(
-      `<strong>Predicted species: ${capitalise(winner)}</strong><br>` +
+      `<strong>Predicted species: ${capitalise(winner)}</strong>` +
       `<small>Votes from the ${model.k} nearest flowers: ${voteText}</small>`
     );
   } catch (error) {
@@ -103,9 +104,7 @@ document.getElementById("predict-btn").addEventListener("click", () => {
 });
 
 document.getElementById("clear-btn").addEventListener("click", () => {
-  ["sepal_length", "sepal_width", "petal_length", "petal_width"].forEach(
-    (id) => (document.getElementById(id).value = "")
-  );
+  featureIds.forEach((id) => (document.getElementById(id).value = ""));
   resultBox.classList.add("hidden");
 });
 

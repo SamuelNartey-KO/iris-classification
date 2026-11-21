@@ -10,13 +10,12 @@
 
   <header>
     <h1>Iris Species Classifier</h1>
-    <p>Enter an iris flower's measurements to predict its species.</p>
+    <p>Enter a flower's measurements to predict its species.</p>
   </header>
 
   <main>
-    <section id="predictor">
-      <h2>Predict the Species</h2>
-      <p>Enter the four measurements in centimetres and click Predict.</p>
+    <div class="card">
+      <h2>Enter Measurements</h2>
 
       <div class="form-grid">
         <label>Sepal length (cm)
@@ -33,19 +32,17 @@
         </label>
       </div>
 
-      <button id="predict-btn">Predict</button>
-      <button id="clear-btn" class="secondary">Clear</button>
+      <div class="actions">
+        <button id="predict-btn">Predict</button>
+        <button id="clear-btn" class="secondary">Clear</button>
+      </div>
 
       <div id="result" class="result hidden"></div>
-    </section>
+    </div>
   </main>
 
   <footer>
-    <p>
-      K-Nearest Neighbours (k = 5) trained on the Iris dataset. Test accuracy: 93.33%.<br>
-    </p>
-  </footer>
-
-  <script src="script.js"></script>
+    <p>K-Nearest Neighbours model trained on the Iris dataset.</p>
+   <script src="script.js"></script>
 </body>
 </html>
